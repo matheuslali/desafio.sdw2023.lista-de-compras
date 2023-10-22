@@ -1,13 +1,10 @@
 package me.dio.domain.model;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.util.List;
 
-@Setter
-@Getter
+
 @Entity(name = "tb_user")
 public class User {
 
@@ -20,4 +17,31 @@ public class User {
     private List<ShoppingList> shoppingList;
 
 
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public List<ShoppingList> getShoppingList() {
+        return shoppingList;
+    }
+
+    public void setShoppingList(List<ShoppingList> shoppingList) {
+        this.shoppingList = shoppingList;
+    }
 }

@@ -17,20 +17,20 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping
-    public ResponseEntity<List<User>> findAll(){
+    @GetMapping("/users")
+    public ResponseEntity<List<User>> findAllUser(){
         var users = userService.findAll();
         return ResponseEntity.ok(users);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<User> findById(@PathVariable Long id){
+    @GetMapping("/users/{id}")
+    public ResponseEntity<User> findByIdUser(@PathVariable Long id){
         var user = userService.findById(id);
         return ResponseEntity.ok(user);
     }
 
-    @PostMapping
-    public ResponseEntity<User> create(@RequestBody User userCreate){
+    @PostMapping("/users")
+    public ResponseEntity<User> createUser(@RequestBody User userCreate){
         userService.create(userCreate);
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
@@ -39,14 +39,14 @@ public class UserController {
         return ResponseEntity.created(location).body(userCreate);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<User> update(@PathVariable Long id,@RequestBody User user){
+    @PutMapping("/users/{id}")
+    public ResponseEntity<User> updateUser(@PathVariable Long id,@RequestBody User user){
         var userUpdate = userService.update(id, user);
         return ResponseEntity.ok(userUpdate);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id){
+    @DeleteMapping("/users/{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Long id){
         userService.delete(id);
         return ResponseEntity.noContent().build();
     }

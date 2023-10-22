@@ -26,6 +26,7 @@ public class ShoppingListServiceImpl implements ShoppingListService {
 
     @Override
     public ShoppingList findById(Long id)  {
+
         return this.shoppingListRepository.findById(id).orElseThrow(NotFoundException::new);
     }
 
